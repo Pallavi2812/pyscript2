@@ -22,7 +22,7 @@
         files = ["main.py"]
     </py-config>
     
-    <script type="py"  >
+    <script type="py">
         from pyscript import Element
         from main import print_hello
         Element("helloBtn").element.onclick = print_hello
@@ -49,9 +49,9 @@
         
         async def main():
             button = js.document.getElementById("genaiBtn")
-            button.addEventListener("click", asyncio.ensure_future(fetch_openai_data()))
+            button.addEventListener("click",lambda e: asyncio.ensure_future(fetch_openai_data()))
 
-        asyncio.ensure_future(fetch_openai_data()) 
+        asyncio.ensure_future(main()) 
         
     </script>
 
