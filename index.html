@@ -21,5 +21,11 @@
         files = ["main.py"]
     </py-config>
 
+    <script type="py"  >
+        from pyscript import Element
+        from main import print_hello
+        Element("helloBtn").element.onclick = print_hello
+    </script>
+
 </body>
 </html>
