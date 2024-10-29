@@ -51,7 +51,7 @@
             button = js.document.getElementById("genaiBtn")
             button.addEventListener("click",lambda e: asyncio.ensure_future(fetch_openai_data()))
 
-        asyncio.ensure_future(main()) 
+        asyncio.ensure_future(fetch_openai_data()) 
         
     </script>
 
