@@ -1,30 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PyScript Hello World</title>
-    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <title>Read Key Vault Secret</title>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css">
     <script defer src="https://pyscript.net/latest/pyscript.js"></script>
 </head>
 <body>
-
-    <h1>Welcome to PyScript</h1>
     <button onclick="getSecret()">Get Secret</button>
-    <button id="helloBtn">Click Me</button>
+    <p id="secret"></p>
 
-    <p id="output"></p>
-    <py-config>
-        packages = ["pandas"]
-        [[fetch]]
-        from = "./pyscripts/"
-        files = ["main.py"]
-    </py-config>
-    <script type="py">
-        from pyscript import Element
-        from main import print_hello
-        Element("helloBtn").element.onclick = print_hello
-
+    <py-script>
         import js
         import asyncio
         from pyodide.http import pyfetch
@@ -39,8 +23,6 @@
 
         def getSecret(*args, **kwargs):
             asyncio.ensure_future(get_secret())
-    </script>
-    
-
+    </py-script>
 </body>
 </html>
