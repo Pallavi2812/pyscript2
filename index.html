@@ -7,7 +7,12 @@
 <body>
     <button onclick="getSecret()">Get Secret</button>
     <p id="secret"></p>
-
+    <py-config>
+        packages = ["pandas"]
+        [[fetch]]
+        from = "./pyscripts/"
+        files = ["main.py"]
+    </py-config>
     <py-script>
         import js
         import asyncio
