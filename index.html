@@ -10,7 +10,7 @@
 <body>
 
     <h1>Welcome to PyScript</h1>
-
+    <button onclick="getSecret()">Get Secret</button>
     <button id="helloBtn">Click Me</button>
 
     <p id="output"></p>
@@ -24,6 +24,21 @@
         from pyscript import Element
         from main import print_hello
         Element("helloBtn").element.onclick = print_hello
+
+        import js
+        import asyncio
+        from pyodide.http import pyfetch
+
+        async def get_secret():
+            response = await pyfetch(url="/get-secret?name=your-secret-name", method="GET")
+            if response.ok:
+                secret = await response.json()
+                js.document.getElementById("secret").innerText = secret["secret"]
+            else:
+                console.error('Error fetching secret:', response.status)
+
+        def getSecret(*args, **kwargs):
+            asyncio.ensure_future(get_secret())
     </script>
     
 
