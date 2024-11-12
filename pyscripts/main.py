@@ -3,7 +3,7 @@ from azure.identity import DefaultAzureCredential
 from azure.keyvault.secrets import SecretClient
 
 def get_secret():
-    key_vault_url = "https://<YOUR-KEY-VAULT-NAME>.vault.azure.net/"
+    key_vault_url = "https://test-pyscript.vault.azure.net/"
     secret_name = "YourSecretName"
 
     credential = DefaultAzureCredential()
