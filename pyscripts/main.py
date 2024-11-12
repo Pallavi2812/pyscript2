@@ -4,7 +4,7 @@ from azure.keyvault.secrets import SecretClient
 
 def get_secret():
     key_vault_url = "https://test-pyscript.vault.azure.net/"
-    secret_name = "YourSecretName"
+    secret_name = "test"
 
     credential = DefaultAzureCredential()
     client = SecretClient(vault_url=key_vault_url, credential=credential)
