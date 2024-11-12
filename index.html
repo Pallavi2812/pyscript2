@@ -10,26 +10,11 @@
 <body>
     <h1>Welcome Page</h1>
     <p id="secret-value">Loading secret...</p>
-
-    <py-script>
-        import os
-        from azure.identity import DefaultAzureCredential
-        from azure.keyvault.secrets import SecretClient
-
-        def get_secret():
-            key_vault_url = "https://test-pyscript.vault.azure.net/"
-            secret_name = "YourSecretName"
-
-            credential = DefaultAzureCredential()
-            client = SecretClient(vault_url=key_vault_url, credential=credential)
-            secret = client.get_secret(secret_name)
-
-            return secret.value
-
-        # Fetch the secret and display it in the HTML element
-        secret_value = get_secret()
-        element = Element("secret-value")
-        element.write(secret_value)
-    </py-script>
+    <py-config>
+        packages = ["pandas"]
+        [[fetch]]
+        from = "./pyscripts/"
+        files = ["main.py"]
+    </py-config>
 </body>
 </html>
