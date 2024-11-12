@@ -1,41 +1,19 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome Page</title>
-    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css">
-    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
 </head>
 <body>
     <h1>Welcome Page</h1>
-    <p id="secret-value">Loading secret...</p>
-    <py-config>
-        packages = ["pandas"]
-        [[fetch]]
-        from = "./pyscripts/"
-        files = ["main.py"]
-    </py-config>
-    <py-script>
-        import os
-        from azure.identity import DefaultAzureCredential
-        from azure.keyvault.secrets import SecretClient
+    <p id="secret-value">Secret: <!-- Secret Value will be displayed here --></p>
 
-        def get_secret():
-            key_vault_url = "https://test-pyscript.vault.azure.net/"
-            secret_name = "test"
-
-            credential = DefaultAzureCredential()
-            client = SecretClient(vault_url=key_vault_url, credential=credential)
-            secret = client.get_secret(secret_name)
-
-            return secret.value
-
-        # Fetch the secret and display it in the HTML element
-        secret_value = get_secret()
-        element = Element("secret-value")
-        element.write(secret_value)
-    </py-script>
+    <script>
+        // Since running the script directly isn't feasible, here's how you would manually include the secret.
+        // Run your Python script locally or on the server to get the secret value.
+        const secretValue = 'YourSecretValueFetchedUsingPython';
+        document.getElementById('secret-value').innerText = `Secret: ${secretValue}`;
+    </script>
 </body>
 </html>
