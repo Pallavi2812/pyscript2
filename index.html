@@ -16,16 +16,18 @@
         from azure.identity import DefaultAzureCredential
         from azure.keyvault.secrets import SecretClient
 
-        key_vault_url = "https://<YOUR-KEY-VAULT-NAME>.vault.azure.net/"
-        secret_name = "YourSecretName"
+        def get_secret():
+            key_vault_url = "https://<YOUR-KEY-VAULT-NAME>.vault.azure.net/"
+            secret_name = "YourSecretName"
 
-        credential = DefaultAzureCredential()
-        client = SecretClient(vault_url=key_vault_url, credential=credential)
-        secret = client.get_secret(secret_name)
+            credential = DefaultAzureCredential()
+            client = SecretClient(vault_url=key_vault_url, credential=credential)
+            secret = client.get_secret(secret_name)
 
-        secret_value = secret.value
+            return secret.value
 
-        # Display the secret value in the HTML
+        # Fetch the secret and display it in the HTML element
+        secret_value = get_secret()
         element = Element("secret-value")
         element.write(secret_value)
     </py-script>
