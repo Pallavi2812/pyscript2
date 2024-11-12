@@ -1,11 +1,7 @@
-from pyscript import Element
 from azure.identity import DefaultAzureCredential
 from azure.keyvault.secrets import SecretClient
 from flask import Flask, jsonify, request
 
-# Function to print "Hello, World!" (it must accept the event argument)
-def print_hello(event):
-        Element("output").write("Hello, World!")
 app = Flask(__name__)
 
 key_vault_name = "test-kv-pyscript"
@@ -24,7 +20,3 @@ def get_secret():
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-from pyscript import Element
-def print_hello(event):
-    Element('output').write('Hello, World!')
