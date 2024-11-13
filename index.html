@@ -9,6 +9,17 @@
 </head>
 <body>
     <h1>Fetch Secrets from Azure Key Vault</h1>
-    <py-script src="main.py"></py-script>
+        <p id="output"></p>
+    <py-config>
+        packages = ["pandas"]
+        [[fetch]]
+        from = "./pyscripts/"
+        files = ["main.py"]
+    </py-config>
+    <script type="py">
+        from pyscript import Element
+        from main import print_hello
+        Element("helloBtn").element.onclick = print_hello
+    </script>
 </body>
 </html>
